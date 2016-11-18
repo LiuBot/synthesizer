@@ -7,6 +7,7 @@
 import React from 'react';
 import {NOTE_NAMES, TONES} from "../../util/tones";
 import Note from "../../util/note";
+import $ from 'jquery';
 
 
 // In the constructor, initialize an array of Note instances and setting it to this.notes.
@@ -19,13 +20,38 @@ class Synth extends React.Component {
 		this.notes = NOTE_NAMES.map(key => new Note(TONES[key])); // array of Note instances
 	}
 
+	onKeyDown(e){
+		this.props.keyPressed(e.key);
+	}
+	
+	onKeyUp(e){
+		this.props.keyReleased(e.key);
+	}
+
+	componentDidMount(){
+		//user presses key => key listener calls your onKeyDown(e) function, 
+		//which dispatches a keyPressed(key) action to the store
+		$(document).on("keydown", e => this.onKeyDown(e));
+
+		// user releases key => key listener calls your oneKeyUp(e) function,
+		// which dispatches a keyReleased(key) action to the store.
+		$(document).on("keyup", e => this.onKeyUp(e));
+	}
+
+	playNotes(){
+		NOTE_NAMES.forEach((note, idx)=>{ // iterate through key letters
+			if (this.props.notes.includes(note[0])){ // if the store includes the key
+				this.notes[idx].start(); // start playing the Note 
+			} else {
+				this.notes[idx].stop();
+			}
+		})
+	}
+
 	render(){
+		this.playNotes();
 		return (
-       <div>Synth
-        <ul>{
-        	this.notes.map((note, idx) => <li key={idx}>{note[0]}</li>
-        		)}</ul>
-      </div>
+       <div>Synth</div>
      )
 	}
 }
