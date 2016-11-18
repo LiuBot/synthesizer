@@ -1,5 +1,4 @@
 // Living here: the action creators that change the app's notes.
-
 export const KEY_PRESSED = "KEY_PRESSED";
 export const KEY_RELEASED = "KEY_RELEASED";
 

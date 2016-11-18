@@ -1,9 +1,11 @@
-import {KEY_PRESSED, 
-				KEY_RELEASED} from "../action/notes_actions.js";
+import {KEY_PRESSED, KEY_RELEASED} from "../actions/notes_actions";
 
-import {NOTE_NAMES} from "../util/tones.js";
+import {NOTE_NAMES} from "../util/tones";
+import merge from 'lodash/merge';
 
-const notesReducer = (state = [], action) =>{
+const _defaultState = [];
+
+const notesReducer = (state = _defaultState, action) =>{
 	Object.freeze(state);
 	let dupState = merge([], state); // use merge to create deep copy
 
@@ -13,19 +15,18 @@ const notesReducer = (state = [], action) =>{
 		case KEY_PRESSED:
 			if (!dupState.includes(action.key) && NOTE_NAMES.includes(action.key)){ 
 					dupState.push(action.key);
-				return dupState;	
 			}
+			return dupState;	
 
 		case KEY_RELEASED:
 			if (dupState.includes(action.key) && NOTE_NAMES.includes(action.key)){
 				dupState = dupState.filter( key => (key !== action.key));
 				}
 			return dupState;
-			}
 
 		default:
 			return state;
-	}
+		}
 }
 
 export default notesReducer;

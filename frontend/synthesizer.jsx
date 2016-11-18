@@ -1,12 +1,17 @@
 // This is the entry doc
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Note from './util/note.js'
+
+import Note from './util/note';
+import configureStore from "./store/store";
+import Root from "./components/root";
 
 window.Note = Note;
 
 document.addEventListener("DOMContentLoaded", () =>{ // add event listener, pass it a callback 
-	const root = document.getElementById('root');
+	const store = configureStore();
+	const rootEl = document.getElementById('root');
 
-	ReactDOM.render(<h1> Synthesizer</h1>, root)
+	ReactDOM.render(<Root store={store}></Root>, rootEl)
+	window.store = store;
 })
