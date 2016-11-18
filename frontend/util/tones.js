@@ -20,4 +20,4 @@ export const TONES = { // TONES constant, a JavaScript object mapping key names 
 };
 
 
-export const NOTE_NAMES = Object.keys(TONES);
+export const NOTE_NAMES = Object.keys(TONES); // this exports the keys of tones ("a...l")
