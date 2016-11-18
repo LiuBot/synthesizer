@@ -8,6 +8,7 @@ import React from 'react';
 import {NOTE_NAMES, TONES} from "../../util/tones";
 import Note from "../../util/note";
 import $ from 'jquery';
+import NoteKey from './note_key';
 
 
 // In the constructor, initialize an array of Note instances and setting it to this.notes.
@@ -50,8 +51,14 @@ class Synth extends React.Component {
 
 	render(){
 		this.playNotes();
+		const noteKeys = NOTE_NAMES.map((note,idx) =>(
+			<NoteKey key={idx} note={note} pressed={this.props.notes.includes(note)}/>
+			))
+
 		return (
-       <div>Synth</div>
+			<div className="keyboard">
+       <div className='note-key-list'>{noteKeys}</div>
+       </div>
      )
 	}
 }
