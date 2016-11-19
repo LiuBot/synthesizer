@@ -7,7 +7,7 @@ const _defaultState = {};
 
 const tracksReducer = (state = _defaultState, action) =>{
 	Object.freeze(state)
-	let dupState = merge([], state)
+	let dupState = merge({}, state)
 	let timeSlice = null;
 	let roll = null;
 
@@ -18,14 +18,14 @@ const tracksReducer = (state = _defaultState, action) =>{
 				id: currTrackId, 
 				name: `Track ${currTrackId}`, 
 				roll: [], 
-				timeStart: action.timeNow
+				timeStart: action.timeStart
 			}
 			dupState[currTrackId] = newTrack;
 			return dupState;
 
 		case STOP_RECORDING:
-			timeSlice = action.timeNow - state[currTrackId].timeStart; // this is just to add silent roll
-			roll = {notes: [], timeSlice}; // add a silent roll
+	  // this is just to add silent roll
+			roll = {notes: [], timeSlice: action.timeNow - state[currTrackId].timeStart}; // add a silent roll
 			dupState[currTrackId].roll.push(roll);
 			return dupState;
 
