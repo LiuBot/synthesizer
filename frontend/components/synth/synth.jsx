@@ -1,8 +1,3 @@
-// To create a container, we need to map the application 
-// state and the Store's dispatch to a set of props that
-//  get passed to the presentational component. 
-//  Fortunately, react-redux provides a function 
-//  that does this for us: connect.
 
 import React from 'react';
 import {NOTE_NAMES, TONES} from "../../util/tones";
@@ -20,13 +15,21 @@ class Synth extends React.Component {
 		super(props);
 		this.notes = NOTE_NAMES.map(key => new Note(TONES[key])); // array of Note instances
 	}
-
+//Rewrite onKeyUp and onKeyDown so that 
+//if isRecording, call addNotes passing it the store's notes
 	onKeyDown(e){
 		this.props.keyPressed(e.key);
+
+		if (this.props.isRecording){
+			this.props.addNotes(this.props.notes)
+		}
 	}
 	
 	onKeyUp(e){
 		this.props.keyReleased(e.key);
+			if (this.props.isRecording){
+				this.props.addNotes(this.props.notes) //adding an empty array
+		}
 	}
 
 	componentDidMount(){
@@ -57,6 +60,7 @@ class Synth extends React.Component {
 
 		return (
 			<div className="keyboard">
+			<h1>Redux Synth!</h1>
        <div className='note-key-list'>{noteKeys}</div>
        </div>
      )

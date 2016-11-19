@@ -5,7 +5,7 @@ export const KEY_RELEASED = "KEY_RELEASED";
 export const keyPressed = key => ({
 	type: KEY_PRESSED,
 	key
-	//to let the store know which key to add to its notes array.
+	//to let the store know which key to add to its notes array. 
 })
 
 export const keyReleased = key => ({

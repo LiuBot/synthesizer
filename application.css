@@ -1,7 +1,65 @@
+
+/* PHASE 0: Reset */
+
+html, head, body, header,
+nav, h1, h2, a, ul, li, main,
+section, p, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+header, nav, main, section,
+footer, small {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+	font-size:36px;
+	text-align: center;
+}
+
+h2 {
+	font-size:30px;
+	text-align: center;
+}
+
+/* Clearfix */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body{
+	width:80%;
+	margin: 0 auto;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	align-content:center;
+	justify-content:center;
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	font-weight:400;
+}
+
 .note-key-list{
 	position:relative;
-	left:20%;
-	margin:30px;
+	margin:0 auto;
 	padding:30px;
 	float:left;
 }
@@ -14,6 +72,7 @@
 	float:left;
 	height: 200px;
 	font-size:40px;
+	margin:0px 1px;
 	padding:0px 15px;
 	border-radius:5px;
 	box-shadow: -3px 5px 0px black;
@@ -39,4 +98,30 @@
 
 .sharp.pressed{
 	color:yellow;
+}
+
+div.recorder{
+	flex-direction:row;
+	position:relative;
+	margin:0 auto;
+	font-family: 'Oswald', sans-serif;
+
+}
+.start, .stop{
+	font:inherit;
+	margin:0 5px;
+	outline:none;
+	font-size:16px;
+	border-radius:5px;
+}
+
+.start{
+	background:#90EE90;
+}
+.stop{	
+	background:#F08080;
+}
+
+.start:hover, .stop:hover{
+	-webkit-filter: brightness(70%);
 }

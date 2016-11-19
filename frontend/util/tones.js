@@ -3,7 +3,7 @@
 
 export const TONES = { // TONES constant, a JavaScript object mapping key names to frequencies. 
   'a': 523.25,
-  'w': 554.37, // #
+  'w': 554.37, // # 
   's': 587.33,
   'e': 622.25, // #
   'd': 659.25,
