@@ -2,21 +2,21 @@
 import React from 'react';
 
 // destructured props argument
-const Recorder = ({isRecording, startRecording, stopRecording}) =>(
-	<div>
+const Recorder = ({isRecording, startRecording, isPlaying, stopRecording}) =>(
+	<div className="recorder">
 		<h2>Recorder</h2>
-			<div className="recorder">
+			<div className="recorder-buttons">
 				<button 
 				className="start"
 				onClick={startRecording} 
-				disabled={isRecording}>
+				disabled={isRecording || isPlaying}>
 				Start
 				</button>
 
 				<button 
 				className="stop"
 				onClick={stopRecording}
-				disabled={!isRecording}>
+				disabled={!isRecording && !isPlaying}>
 				Stop
 				</button>
 			</div>

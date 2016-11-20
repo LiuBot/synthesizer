@@ -61,7 +61,7 @@ class Synth extends React.Component {
 		return (
 			<div className="keyboard">
 			<h1>Redux Synth!</h1>
-       <div className='note-key-list'>{noteKeys}</div>
+       <div className='note-key-list cf'>{noteKeys}</div>
        </div>
      )
 	}

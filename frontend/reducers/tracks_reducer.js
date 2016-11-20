@@ -1,4 +1,4 @@
-import {START_RECORDING, STOP_RECORDING, ADD_NOTES} from "../actions/tracks_actions";
+import {START_RECORDING, STOP_RECORDING, ADD_NOTES, DELETE_TRACK} from "../actions/tracks_actions";
 import merge from 'lodash/merge';
 
 let currTrackId = 0; 
@@ -41,6 +41,10 @@ const tracksReducer = (state = _defaultState, action) =>{
 			roll = {notes: action.notes, timeSlice}
 			// add these to the roll
 			dupState[currTrackId].roll.push(roll);
+			return dupState;
+
+		case DELETE_TRACK:
+			delete dupState[action.id];
 			return dupState;
 
 		default:

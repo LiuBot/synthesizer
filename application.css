@@ -29,16 +29,18 @@ ul {
 h1 {
 	font-size:36px;
 	text-align: center;
+	display:block;
 }
 
 h2 {
 	font-size:30px;
+	display:block;
 	text-align: center;
 }
 
 /* Clearfix */
 
-.group:after {
+.cf:after {
   content: "";
   display: block;
   clear: both;
@@ -58,10 +60,11 @@ body{
 }
 
 .note-key-list{
+	display:block;
+	flex-direction:row;
 	position:relative;
 	margin:0 auto;
 	padding:30px;
-	float:left;
 }
 
 .note-key{
@@ -100,19 +103,24 @@ body{
 	color:yellow;
 }
 
-div.recorder{
+div.recorder-buttons{
 	flex-direction:row;
 	position:relative;
 	margin:0 auto;
 	font-family: 'Oswald', sans-serif;
 
 }
-.start, .stop{
+.delete-button, .play-button, .start, .stop{
 	font:inherit;
 	margin:0 5px;
 	outline:none;
 	font-size:16px;
 	border-radius:5px;
+	border: 1px solid black;
+}
+
+.track{
+	margin:10px;
 }
 
 .start{
@@ -122,6 +130,24 @@ div.recorder{
 	background:#F08080;
 }
 
-.start:hover, .stop:hover{
+.play-button{
+	background:cyan;
+}
+
+.delete-button{
+	background: #a00725;
+	color:white;
+}
+
+.play-button:hover, .start:hover, .stop:hover{
 	-webkit-filter: brightness(70%);
+}
+
+.delete-button:hover{
+	background:black;
+}
+
+.juke-box, .recorder{
+	position:relative;
+	margin:30px;
 }
